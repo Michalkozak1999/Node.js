@@ -1,2 +1,6 @@
 const color = require('colors')
-console.log(color)
+const mymodule = require('./mymodule')
+// console.log(color)
+
+
+mymodule.readModuleName();
