@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form action="">
+        Imie: <br>
+        <input type="text" id="nameInput"> <br>
+        Nazwisko: <br>
+        <input type="text" id="surnameInput"> <br>
+        <button type="submit">Wygeneruj odnośnik</button>
+    </form>
+    <a href="">Jestem odnościnkiem</a>
+    <script>
+        const nameInput = document.querySelector("#nameInput")
+        const surnameInput = document.querySelector("#surnameInput")
+        const form = document.querySelector("form")
+        const a = document.querySelector("a");
+
+        // const name = "jakaś osoba";
+        // const surname = "testowy"
+
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault()
+
+            const name = nameInput.value;
+            const surname = surnameInput.value;
+
+
+            const param = new URLSearchParams({
+                name,
+                surname,
+            })
+            // const url = `http://localhost:3000/?name${encodeURIComponent(name)}&surname=${encodeURIComponent(surname)}`;
+            const url = `http://localhost:3000/?` + param;
+
+
+            a.setAttribute('href', url)
+        });
+
+
+    </script>
+
+
+</body>
+
+</html>
