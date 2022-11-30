@@ -73,12 +73,71 @@ for (const button of buttons) {
     })
 }
 
+const tivDiv = document.querySelector("#tip")
+function handleRoFriendsAbswer(data) {
+    tivDiv.innerText = data.text
+}
+
 function callToAFriend() {
     fetch(`/help/friend`, {
-        method: "GET"
+        method: "GET",
     }).then(res => res.json()).then(data => {
+        handleRoFriendsAbswer(data)
         console.log(data);
     })
 }
 
 document.querySelector("#callToAFriend").addEventListener("click", callToAFriend)
+
+
+
+
+//////////////////////////////
+
+// const tivDiv = document.querySelector("#tip")
+function handlehalfOnHalfAnswer(data) {
+    if (typeof data.text === "string") {
+        tivDiv.innerText = data.text
+    } else {
+        for (const button of buttons) {
+            if (data.answersToRemowe.indexOf(button.innerText) > -1) {
+                button.innerText = '';
+            }
+        }
+    }
+}
+
+function halfOnHalf() {
+    fetch(`/help/half`, {
+        method: "GET",
+    }).then(res => res.json()).then(data => {
+        handlehalfOnHalfAnswer(data)
+        console.log(data);
+    })
+}
+
+document.querySelector("#halfOnHalf").addEventListener("click", halfOnHalf)
+
+
+//////////////////////////////////////
+function handleCrowdAnswer(data) {
+    if (typeof data.text === "string") {
+        tivDiv.innerText = data.text
+    } else {
+      data.chart.forEach((perc, index)=>{
+          buttons[index].innerText = `${buttons[index].innerText} : ${perc}%`
+      })
+    }
+
+}
+
+function qestionToTheCrowd() {
+    fetch(`/help/crowd`, {
+        method: "GET",
+    }).then(res => res.json()).then(data => {
+        handleCrowdAnswer(data)
+        console.log(data);
+    })
+}
+
+document.querySelector("#qestionToTheCrowd").addEventListener("click", qestionToTheCrowd)
