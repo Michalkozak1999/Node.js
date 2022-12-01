@@ -6,7 +6,7 @@ import gameRoutes from "./routes/game.js";
 const app = express();
 
 app.listen(3000, () => {
-    console.log("Server is Lisening Lets GOOOO")
+    // console.log("Server is Lisening Lets GOOOO")
 });
 
 const __filename = fileURLToPath(import.meta.url)

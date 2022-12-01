@@ -20,7 +20,7 @@ function gameRoutes(app) {
         {
             qestion: "Czy chcesz zjeść pizze?",
             answers: ['Nawet dwie!', "Jestem na diecie", "Wolę brokuły", "nie wiem"],
-            correctAnswer: 2,
+            correctAnswer: 1,
         },
     ]
 
@@ -104,7 +104,7 @@ function gameRoutes(app) {
         callToAFriend = true;
 
         const qestion = qestions[goodAnswers];
-        const doesFriendKnowAnswer = Math.random() < 0.5;
+        const doesFriendKnowAnswer = Math.random() < 0.3;
         res.json({
             text: doesFriendKnowAnswer ? `Hmmm wydaje mi się że odpowiedz to: ${qestion.answers[qestion.correctAnswer]} ` : "Hmm no nie wiem"
         })
@@ -143,7 +143,7 @@ function gameRoutes(app) {
 
         qestionToTheCrowdUsed = true
 
-        const chart = [10, 20, 30, 40];
+        const chart = [15, 20, 30, 35];
 
 
         for (let i = chart.length - 1; i > 0; i--) {
@@ -175,7 +175,29 @@ function gameRoutes(app) {
 
 
 
+// app.get('/help/crowd', (req, res) => {
+//     if (qestionToTheCrowdUsed) {
+//         return res.json({
+//             text: "To koło ratunkowe zostało wykorzytane"
+//         })
+//     }
 
+//     qestionToTheCrowdUsed = true
+
+//     const chart = [15, 20, 30, 35];
+
+
+//     for (let i = chart.length - 1; i > 0; i--) {
+//         const change = ~~(Math.random() * 20 - 10)
+
+
+//         chart[i] += change
+//         chart[i - 1] -= change
+
+
+//     }
+//     const qestion = qestions[goodAnswers];
+//     const { correctAnswer } = qestion;
 
 
 
